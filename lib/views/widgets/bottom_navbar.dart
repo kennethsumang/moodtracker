@@ -43,15 +43,15 @@ class _BottomNavbarState extends State<BottomNavbar> {
         switch (index) {
           case 0:
             setSelectedIndex(0);
-            GoRouter.of(context).go('/');
+            GoRouter.of(context).go('/app');
             return;
           case 1:
             setSelectedIndex(1);
-            GoRouter.of(context).go('/records');
+            GoRouter.of(context).go('/app/records');
             return;
           case 2:
             setSelectedIndex(2);
-            GoRouter.of(context).go('/settings');
+            GoRouter.of(context).go('/app/settings');
             return;
           default:
             return;

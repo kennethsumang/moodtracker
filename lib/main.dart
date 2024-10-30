@@ -13,7 +13,7 @@ void main() {
 }
 
 final _router = GoRouter(
-  initialLocation: '/app',
+  initialLocation: '/',
   routes: [
     ShellRoute(
       builder: (context, state, child) => AuthScaffold(child: child),
