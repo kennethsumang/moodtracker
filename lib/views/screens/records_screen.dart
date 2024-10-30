@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/bottom_navbar.dart';
-
 class RecordsScreen extends StatelessWidget {
   const RecordsScreen({super.key});
 

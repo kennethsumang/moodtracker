@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:moodtracker/views/widgets/bottom_navbar.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
