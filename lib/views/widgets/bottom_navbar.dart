@@ -30,10 +30,6 @@ class _BottomNavbarState extends State<BottomNavbar> {
           icon: Icon(Icons.article_outlined),
           label: 'Records',
         ),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings'
-        )
       ],
       onTap: (index) {
         if (index == selectedIndex) {
@@ -43,15 +39,11 @@ class _BottomNavbarState extends State<BottomNavbar> {
         switch (index) {
           case 0:
             setSelectedIndex(0);
-            GoRouter.of(context).go('/app');
+            GoRouter.of(context).go('/');
             return;
           case 1:
             setSelectedIndex(1);
-            GoRouter.of(context).go('/app/records');
-            return;
-          case 2:
-            setSelectedIndex(2);
-            GoRouter.of(context).go('/app/settings');
+            GoRouter.of(context).go('/records');
             return;
           default:
             return;

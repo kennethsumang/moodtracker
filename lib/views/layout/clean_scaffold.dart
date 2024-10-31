@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class AuthScaffold extends StatelessWidget {
+class CleanScaffold extends StatelessWidget {
   final Widget child;
-  const AuthScaffold({super.key, required this.child });
+  const CleanScaffold({super.key, required this.child });
 
   @override
   Widget build(BuildContext context) {
