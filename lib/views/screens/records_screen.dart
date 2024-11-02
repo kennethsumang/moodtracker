@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moodtracker/views/widgets/records_list.dart';
 
 class RecordsScreen extends StatelessWidget {
   const RecordsScreen({super.key});
@@ -6,9 +7,11 @@ class RecordsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        Text("Hello, Records page!"),
+        Expanded(
+          child: RecordsList(),
+        ),
       ],
     );
   }

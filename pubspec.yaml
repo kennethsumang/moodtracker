@@ -38,6 +38,7 @@ dependencies:
   go_router:
   settings_ui:
   path_provider:
+  uuid:
 
 dev_dependencies:
   flutter_test:
