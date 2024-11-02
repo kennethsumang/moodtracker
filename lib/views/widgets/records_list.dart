@@ -25,22 +25,23 @@ class _RecordsListState extends State<RecordsList> {
       future: _moods,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error}'));
         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-          return Center(child: Text('No records available'));
+          return const Center(child: Text('No records available'));
         } else {
           final moods = snapshot.data!;
-          return ListView.builder(
+          return ListView.separated(
             itemCount: moods.length,
+            separatorBuilder: (context, index) => const Divider(),
             itemBuilder: (context, index) {
               final mood = moods[index];
               return ListTile(
-                title: Text('Mood Level: ${mood.level}'),
+                title: Text(mood.title),
                 subtitle: Text(
                   '${mood.content}\nDate: ${mood.dateTime.toLocal()}',
-                  style: TextStyle(fontSize: 14),
+                  style: const TextStyle(fontSize: 14),
                 ),
                 isThreeLine: true,
               );
