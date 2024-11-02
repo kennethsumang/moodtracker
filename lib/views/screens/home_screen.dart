@@ -5,11 +5,18 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Text("Hello, World!"),
-      ],
+    return const Padding(
+      padding: EdgeInsets.all(16),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+              "Hello!",
+              style: TextStyle(fontSize: 24)
+          ),
+        ],
+      )
     );
   }
 }

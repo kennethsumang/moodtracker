@@ -38,10 +38,26 @@ class _RecordsListState extends State<RecordsList> {
             itemBuilder: (context, index) {
               final mood = moods[index];
               return ListTile(
-                title: Text(mood.title),
-                subtitle: Text(
-                  '${mood.content}\nDate: ${mood.dateTime.toLocal()}',
-                  style: const TextStyle(fontSize: 14),
+                // leading: Icon(Icons.),
+                title: Text(
+                  mood.title,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                subtitle: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      mood.content,
+                      maxLines: 2,
+                    ),
+                    Text(
+                      mood.dateTime.toLocal().toString(),
+                      style: const TextStyle(
+                        fontSize: 12
+                      )
+                    ),
+                  ],
                 ),
                 isThreeLine: true,
               );
