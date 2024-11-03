@@ -39,6 +39,8 @@ dependencies:
   settings_ui:
   path_provider:
   uuid:
+  collection:
+  flutter_quill:
 
 dev_dependencies:
   flutter_test:

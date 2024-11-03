@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../models/mood_model.dart';
 import '../../repositories/mood_repository.dart';
@@ -60,6 +61,9 @@ class _RecordsListState extends State<RecordsList> {
                   ],
                 ),
                 isThreeLine: true,
+                onTap: () => {
+                  GoRouter.of(context).push('/mood/${mood.id}')
+                },
               );
             },
           );
