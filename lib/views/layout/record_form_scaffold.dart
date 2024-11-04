@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class ViewRecordScaffold extends StatelessWidget {
+class RecordFormScaffold extends StatelessWidget {
   final Widget child;
-  const ViewRecordScaffold({super.key, required this.child });
+  const RecordFormScaffold({super.key, required this.child });
 
   @override
   Widget build(BuildContext context) {

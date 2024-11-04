@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:moodtracker/views/layout/app_scaffold.dart';
-import 'package:moodtracker/views/layout/create_record_scaffold.dart';
-import 'package:moodtracker/views/layout/view_record_scaffold.dart';
+import 'package:moodtracker/views/layout/record_form_scaffold.dart';
 import 'package:moodtracker/views/screens/create_record_screen.dart';
 import 'package:moodtracker/views/screens/home_screen.dart';
 import 'package:moodtracker/views/screens/records_screen.dart';
@@ -34,23 +33,18 @@ final _router = GoRouter(
       ],
     ),
     ShellRoute(
-      builder: (context, state, child) => CreateRecordScaffold(child: child),
+      builder: (context, state, child) => RecordFormScaffold(child: child),
       routes: [
         GoRoute(
           path: '/mood',
           builder: (context, state) => const CreateRecordScreen(),
         ),
-      ],
-    ),
-    ShellRoute(
-      builder: (context, state, child) => ViewRecordScaffold(child: child),
-      routes: [
         GoRoute(
           path: '/mood/:id',
           builder: (context, state) => const ViewRecordScreen(),
-        )
-      ]
-    )
+        ),
+      ],
+    ),
   ],
 );
 
