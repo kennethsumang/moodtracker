@@ -4,7 +4,7 @@ import 'package:flutter_quill/quill_delta.dart';
 import 'package:moodtracker/models/mood_model.dart';
 
 class RecordForm extends StatefulWidget {
-  final Mood initialData;
+  final Mood? initialData;
 
   const RecordForm({ super.key, required this.initialData });
 
@@ -47,7 +47,7 @@ class _RecordFormState extends State<RecordForm> {
 
   @override
   Widget build(BuildContext context) {
-    _quillController.setContents(Delta.fromJson([{ 'insert': '${widget.initialData.content}\n' }]));
+    _quillController.setContents(Delta.fromJson([{ 'insert': '${widget.initialData?.content ?? ''}\n' }]));
 
     return Padding(
       padding: const EdgeInsets.all(16),
@@ -59,7 +59,7 @@ class _RecordFormState extends State<RecordForm> {
             decoration: const InputDecoration(
               border: UnderlineInputBorder(),
             ),
-            initialValue: widget.initialData.title,
+            initialValue: widget.initialData?.title ?? '',
             style: const TextStyle(
               fontWeight: FontWeight.bold,
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moodtracker/views/widgets/record_form.dart';
 
 class CreateRecordScreen extends StatelessWidget {
   const CreateRecordScreen({super.key});
@@ -7,8 +8,9 @@ class CreateRecordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text("Create Record Screen")
+        RecordForm(initialData: null)
       ],
     );
   }

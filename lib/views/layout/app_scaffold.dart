@@ -20,7 +20,9 @@ class AppScaffold extends StatelessWidget {
         floatingActionButton: location == '/settings' ? Container() : FloatingActionButton(
           tooltip: 'New Record',
           child: const Icon(Icons.add),
-          onPressed: () => {},
+          onPressed: () {
+            GoRouter.of(context).push('/mood');
+          },
         ),
         bottomNavigationBar: const BottomNavbar()
     );
