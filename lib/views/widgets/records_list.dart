@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
+import 'package:moodtracker/services/mood_service.dart';
 import '../../models/mood_model.dart';
-import '../../repositories/mood_repository.dart';
 
 class RecordsList extends StatefulWidget {
   const RecordsList({super.key});
@@ -17,7 +16,7 @@ class _RecordsListState extends State<RecordsList> {
   @override
   void initState() {
     super.initState();
-    _moods = MoodRepository().getMoods();
+    _moods = MoodService().getMoods();
   }
 
   @override
