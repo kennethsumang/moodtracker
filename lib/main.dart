@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:moodtracker/views/layout/app_scaffold.dart';
 import 'package:moodtracker/views/layout/record_form_scaffold.dart';
+import 'package:moodtracker/views/notifiers/record_form_provider.dart';
+import 'package:moodtracker/views/notifiers/record_list_notifier.dart';
 import 'package:moodtracker/views/screens/create_record_screen.dart';
 import 'package:moodtracker/views/screens/home_screen.dart';
 import 'package:moodtracker/views/screens/records_screen.dart';
 import 'package:moodtracker/views/screens/settings_screen.dart';
 import 'package:moodtracker/views/screens/view_record_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -54,12 +57,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: _router,
-      title: 'Mood Tracker',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => RecordListNotifier()),
+        ChangeNotifierProvider(create: (context) => RecordFormProvider()),
+      ],
+      child: MaterialApp.router(
+        routerConfig: _router,
+        title: 'Mood Tracker',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
       ),
     );
   }

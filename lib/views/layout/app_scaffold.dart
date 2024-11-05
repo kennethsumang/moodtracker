@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:moodtracker/views/notifiers/record_list_notifier.dart';
-import 'package:provider/provider.dart';
 import '../widgets/bottom_navbar.dart';
 
 class AppScaffold extends StatelessWidget {
@@ -16,13 +14,8 @@ class AppScaffold extends StatelessWidget {
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: const Text("Mood Tracker"),
         ),
-        body: MultiProvider(
-          providers: [
-            ChangeNotifierProvider(create: (context) => RecordListNotifier()),
-          ],
-          child: Center(
-            child: child
-          ),
+        body: Center(
+          child: child
         ),
         floatingActionButton: location == '/settings' ? Container() : FloatingActionButton(
           tooltip: 'New Record',
