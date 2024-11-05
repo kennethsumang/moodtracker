@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:moodtracker/services/mood_service.dart';
-import '../../models/mood_model.dart';
+import 'package:moodtracker/views/notifiers/record_list_notifier.dart';
+import 'package:provider/provider.dart';
 
 class RecordsList extends StatefulWidget {
   const RecordsList({super.key});
@@ -11,32 +11,36 @@ class RecordsList extends StatefulWidget {
 }
 
 class _RecordsListState extends State<RecordsList> {
-  late Future<List<Mood>> _moods;
+  bool _isInitialized = false;
 
   @override
   void initState() {
     super.initState();
-    _moods = MoodService().getMoods();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_isInitialized) {
+      Provider.of<RecordListNotifier>(context, listen: false).fetchMoods();
+      _isInitialized = true;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Mood>>(
-      future: _moods,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
+    return Consumer<RecordListNotifier>(
+      builder: (context, dataProvider, child) {
+        if (dataProvider.isLoading) {
           return const Center(child: CircularProgressIndicator());
-        } else if (snapshot.hasError) {
-          return Center(child: Text('Error: ${snapshot.error}'));
-        } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-          return const Center(child: Text('No records available'));
+        } else if (dataProvider.data.isEmpty) {
+          return const Center(child: Text("No records available."));
         } else {
-          final moods = snapshot.data!;
           return ListView.separated(
-            itemCount: moods.length,
+            itemCount: dataProvider.data.length,
             separatorBuilder: (context, index) => const Divider(),
             itemBuilder: (context, index) {
-              final mood = moods[index];
+              final mood = dataProvider.data[index];
               return ListTile(
                 // leading: Icon(Icons.),
                 title: Text(
@@ -52,10 +56,10 @@ class _RecordsListState extends State<RecordsList> {
                       maxLines: 2,
                     ),
                     Text(
-                      mood.dateTime.toLocal().toString(),
-                      style: const TextStyle(
-                        fontSize: 12
-                      )
+                        mood.dateTime.toLocal().toString(),
+                        style: const TextStyle(
+                            fontSize: 12
+                        )
                     ),
                   ],
                 ),

@@ -43,6 +43,7 @@ dependencies:
   collection:
   flutter_quill:
   fluttertoast:
+  provider:
 
 dev_dependencies:
   flutter_test:
